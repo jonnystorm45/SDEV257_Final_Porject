@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button, FlatList } from 'react-native';
+import { Text, StyleSheet, FlatList, SafeAreaView } from 'react-native';
 
-const SearchResults = ({ query, results, goBack }) => {
+export default function SearchResults({ route }){
+  const { query, results } = route.params;
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.text}>Showing results for: {query}</Text>
       <FlatList
         data={results}
@@ -13,10 +14,9 @@ const SearchResults = ({ query, results, goBack }) => {
         )}
         style={{ marginTop: 20 }}
       />
-      <Button title="Back" onPress={goBack} color="#D32F2F" />
-    </View>
+    </SafeAreaView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -36,5 +36,3 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
   },
 });
-
-export default SearchResults;
