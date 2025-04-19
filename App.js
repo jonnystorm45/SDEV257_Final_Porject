@@ -3,7 +3,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './screens/HomeScreen';
 import SearchScreen from './screens/SearchScreen';
-import SearchResults from './screens/SearchResults';
+import SearchResults from './screens/searchResults';
+import SearchDetails from './screens/searchDetails';
 import { registerRootComponent } from 'expo';
 
 const Stack = createNativeStackNavigator();
@@ -36,6 +37,11 @@ export default function App() {
           name="SearchResults" 
           component={SearchResults} 
           options={{ title: 'Search Results' }} // Custom title for Search Results screen
+        />
+        <Stack.Screen 
+        name="SearchDetails"
+        component={SearchDetails}
+        options={{ title: 'Search Details' }} // Custom title for the Search Details screen
         />
       </Stack.Navigator>
     </NavigationContainer>

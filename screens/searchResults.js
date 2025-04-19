@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useLayoutEffect } from 'react';
-import { View, Text, StyleSheet, FlatList, ActivityIndicator, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, FlatList, ActivityIndicator, TouchableOpacity } from 'react-native';
 import axios from 'axios';
 
 export default function SearchResults({ route, navigation }) {
@@ -24,7 +24,7 @@ export default function SearchResults({ route, navigation }) {
         },
       });
 
-      console.log('API response:', response.data); // Debug log
+      console.log('API response:', JSON.stringify(response.data, null, 2)); // Debug log
 
       if (response.data && response.data.results) {
         setResults(response.data.results);
@@ -86,11 +86,11 @@ export default function SearchResults({ route, navigation }) {
           data={results}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
-            <View style={styles.movieCard}>
+            <TouchableOpacity style={styles.movieCard} onPress={() => navigation.navigate('SearchDetails', { movieId: item.id })}>
               <Text style={styles.movieTitle}>{item.title}</Text>
               {/* If you want to show images later: */}
               {/* <Image source={{ uri: `https://image.tmdb.org/t/p/w500${item.poster_path}` }} style={styles.poster} /> */}
-            </View>
+            </TouchableOpacity>
           )}
         />
       )}
