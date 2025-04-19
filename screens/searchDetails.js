@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, StyleSheet, ActivityIndicator } from 'react-native';
+import { View, Text, Image, ScrollView, StyleSheet, ActivityIndicator } from 'react-native';
 import axios from 'axios';
 
 export default function SearchDetails({ route }) {
@@ -50,14 +50,16 @@ export default function SearchDetails({ route }) {
             source={{ uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}`}}
             style={styles.poster}
             />
+            <ScrollView>
             <Text style={styles.overview}>{movie.overview}</Text>
+            </ScrollView>
         </View>
     )
     
 }
 
 const styles = StyleSheet.create({
-    container: { padding: 20 },
+    container: { flex:1, padding: 20 },
     center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
     title: { fontSize: 24, fontWeight: 'bold', marginBottom: 10 },
     poster: { width: '100%', height: 475, resizeMode: 'contain', marginVertical: 20 },
