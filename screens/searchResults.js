@@ -49,7 +49,7 @@ export default function SearchResults({ route, navigation }) {
     navigation.setOptions({
       headerRight: () => (
         <TouchableOpacity
-          onPress={() => navigation.navigate('Home')} // Navigates back to Home screen
+          onPressOut={() => navigation.popToTop()} // Navigates back to Home screen
           style={styles.homeButton}
         >
           <Text style={styles.homeButtonText}>Home</Text>
@@ -101,22 +101,25 @@ export default function SearchResults({ route, navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
-    backgroundColor: '#fff',
+    paddingVertical: 16,
+    paddingHorizontal: 32,
+    backgroundColor: '#242830',
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 16,
+    color: '#fff'
   },
   movieCard: {
     marginBottom: 16,
     padding: 10,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#191c21',
     borderRadius: 8,
   },
   movieTitle: {
     fontSize: 18,
+    color: '#fff'
   },
   error: {
     fontSize: 18,

@@ -15,7 +15,7 @@ export default function SearchScreen({ navigation }) {
     navigation.setOptions({
       headerRight: () => (
         <TouchableOpacity
-          onPress={() => navigation.navigate('Home')} // Navigates back to Home screen
+          onPressOut={() => navigation.popToTop()} // Navigates back to Home screen
           style={styles.homeButton}
         >
           <Text style={styles.homeButtonText}>Home</Text>
