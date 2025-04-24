@@ -1,9 +1,11 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { View, Text, Image, ScrollView, StyleSheet, 
-    ActivityIndicator, TouchableOpacity } from 'react-native';
+    ActivityIndicator, TouchableOpacity, 
+    ImageBackground} from 'react-native';
 import Animated, { useSharedValue, useAnimatedStyle,
     withTiming, withDelay, Easing } from "react-native-reanimated";
 import axios from 'axios';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function SearchDetails({ route, navigation }) {
     const { movieId } = route.params;
@@ -97,8 +99,6 @@ export default function SearchDetails({ route, navigation }) {
         };
     });
 
-
-
     // Use useLayoutEffect to set the headerRight button
       useLayoutEffect(() => {
         navigation.setOptions({
@@ -131,7 +131,18 @@ export default function SearchDetails({ route, navigation }) {
 
     return (
         // Movie details container
-        <View style={styles.container}>
+        <ImageBackground
+            source={{ uri: `https://image.tmdb.org/t/p/w500${movie.backdrop_path}` }}
+            resizeMode='cover'
+            style={ styles.container }
+            imageStyle={ styles.imageBackground }
+        >
+            <LinearGradient 
+                colors={[ '#242830', 'transparent']}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 0, y: 1 }}
+                style={ StyleSheet.absoluteFill }
+            />
             <ScrollView>
                 <Animated.Text style={[ styles.title, animatedStyleTitle ]}>
                     {movie.title}
@@ -144,7 +155,7 @@ export default function SearchDetails({ route, navigation }) {
                     {movie.overview}
                 </Animated.Text>
             </ScrollView>
-        </View>
+        </ImageBackground>
     )
 }
 
@@ -185,5 +196,8 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 16,
         textAlign: 'center',
+    },
+    imageBackground: {
+        opacity: 0.2
     },
   });
