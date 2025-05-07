@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#fff',
     fontSize: 14,
-    fontFamily: 'Roboto',
+    fontFamily: 'sans-serif',
     textTransform: 'uppercase',
     textAlign: 'center',
   }
