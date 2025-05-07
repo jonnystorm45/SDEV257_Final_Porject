@@ -30,10 +30,18 @@ export default function SearchScreen({ navigation }) {
         style={styles.input}
         placeholder="Search movies..."
         placeholderTextColor="#ccc"
+        inputMode="search"
+        enterKeyHint="search"
         value={query}
         onChangeText={setQuery}
+        onSubmitEditing={handleSearch}
       />
-      <Button title="Search" onPress={handleSearch} color="#D32F2F" />
+      <TouchableOpacity
+        onPress={handleSearch}
+        style={styles.button}
+      >
+        <Text style={styles.buttonText}>Search</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -63,4 +71,19 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'center',
   },
+  button: {
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderRadius: 4,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#D32F2F'
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 14,
+    fontFamily: 'Roboto',
+    textTransform: 'uppercase',
+    textAlign: 'center',
+  }
 });

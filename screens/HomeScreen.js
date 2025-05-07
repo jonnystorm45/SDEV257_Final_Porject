@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Button, StyleSheet, Text, ImageBackground } from 'react-native';
+import { View, Button, StyleSheet, Text, ImageBackground, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 export default function HomeScreen({ navigation }) {
@@ -19,11 +19,12 @@ export default function HomeScreen({ navigation }) {
           style={ StyleSheet.absoluteFill }
         />
         <Text style={styles.title}>Welcome to YourFlix!</Text>
-        <Button 
-          title="Start Searching Movies" 
-          onPress={() => navigation.navigate('Search')} 
-          color="#D32F2F"
-        />
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Search')}
+          style={styles.button}
+        >
+          <Text style={styles.buttonText}>Start Searching Movies</Text>
+        </TouchableOpacity>
     </ImageBackground>
   );
 }
@@ -43,5 +44,20 @@ const styles = StyleSheet.create({
   },
   imageBackground: {
     opacity: 0.2
-},
+  },
+  button: {
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderRadius: 4,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#D32F2F'
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 14,
+    fontFamily: 'Roboto',
+    textTransform: 'uppercase',
+    textAlign: 'center',
+  }
 });
